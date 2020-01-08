@@ -23,6 +23,10 @@
       :onStartEdit="onStartEdit"
       :onEdit="onEdit"
     />
+    <div class="todo-details">
+      <span>Total: {{ todos.length }}</span>
+      <span>Completed: {{ computeIsCompleted() }}</span>
+    </div>
   </div>
 </template>
 <script>
@@ -49,7 +53,7 @@ export default {
       }
       let todo = {};
       todo.task = this.newTodo;
-      todo.isCompleted = false;
+      todo.isChecked = false;
       todo.editFlag = false;
       todo.id = Date.now();
       this.todos.push(todo);
@@ -84,6 +88,16 @@ export default {
         }
       });
       newTask = "";
+    },
+    computeIsCompleted() {
+      const newTodos = this.todos;
+      let count = 0;
+      newTodos.forEach(todo => {
+        if (todo.isChecked) {
+          count += 1;
+        }
+      });
+      return count;
     }
   }
 };
@@ -112,5 +126,12 @@ button.todo-submit-button {
   width: 80px;
   border-radius: 5px;
   background-color: #f2eded;
+}
+div.todo-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 </style>
