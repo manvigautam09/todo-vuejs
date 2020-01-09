@@ -77,7 +77,9 @@ strike.striked-text {
 div.todo-task {
   width: 300px;
   height: 40px;
-  font-size: 16px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 input.todo-input-task {
   width: 298px;
