@@ -130,7 +130,7 @@ div.add-todo-div {
 input.todo-input {
   width: 350px;
   height: 40px;
-  font-size: 16px;
+  font-size: 20px;
 }
 button.todo-submit-button {
   height: 45px;
