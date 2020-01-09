@@ -38,14 +38,13 @@ import TodoArray from "./TodoArray";
 export default {
   name: "Todo",
   components: { TodoArray },
-  props: {
-    title: String
-  },
+
   data() {
     return {
       newTodo: "",
       todos: [],
-      btnText: "Add"
+      btnText: "Add",
+      title: "ToDoS"
     };
   },
   methods: {

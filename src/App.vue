@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-    <Todo title="ToDos" />
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import Todo from "./components/Todo.vue";
 export default {
-  name: "app",
-  components: {
-    Todo
-  }
+  name: "app"
 };
 </script>
 
