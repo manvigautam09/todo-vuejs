@@ -1,31 +1,34 @@
 <template>
   <div class="outer-div">
-    <h1 class="heading">{{ title }}</h1>
-    <div class="add-todo-div">
-      <input
-        v-model.trim="newTodo"
-        type="text"
-        class="todo-input"
-        placeholder="What needs to be done?"
-        @keyup.enter="submitTodo()"
+    <div class="todo-section">
+      <h1 class="heading">{{ title }}</h1>
+      <div class="add-todo-div">
+        <input
+          v-model.trim="newTodo"
+          type="text"
+          class="todo-input"
+          placeholder="What needs to be done?"
+          @keyup.enter="submitTodo()"
+        />
+        <button
+          class="todo-submit-button"
+          @click="submitTodo()"
+          :disabled="findDisabled()"
+        >
+          {{ btnText }}
+        </button>
+      </div>
+      <TodoArray
+        :todos="todos"
+        :onDelete="onDelete"
+        :onStartEdit="onStartEdit"
+        :onEdit="onEdit"
       />
-      <button
-        class="todo-submit-button"
-        @click="submitTodo()"
-        :disabled="findDisabled()"
-      >
-        {{ btnText }}
-      </button>
-    </div>
-    <TodoArray
-      :todos="todos"
-      :onDelete="onDelete"
-      :onStartEdit="onStartEdit"
-      :onEdit="onEdit"
-    />
-    <div class="todo-details">
-      <span>Total: {{ todos.length }}</span>
-      <span>Completed: {{ computeIsCompleted() }}</span>
+      <div class="todo-details">
+        <h4>Total: {{ todos.length }}</h4>
+        <h4>Completed: {{ computeIsCompleted() }}</h4>
+        <h4>Remaining: {{ todos.length - computeIsCompleted() }}</h4>
+      </div>
     </div>
   </div>
 </template>
@@ -105,8 +108,16 @@ export default {
 <style scoped>
 div.outer-div {
   justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
+}
+div.todo-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #e8d4d5;
+  width: 470px;
 }
 h1.heading {
   align-self: center;
@@ -129,9 +140,7 @@ button.todo-submit-button {
 }
 div.todo-details {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: space-around;
 }
 </style>

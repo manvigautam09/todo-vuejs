@@ -15,7 +15,11 @@
         <p v-if="!item.isChecked">{{ item.task }}</p>
         <strike v-else class="striked-text">{{ item.task }}</strike>
       </div>
-      <button class="todo-del-button" @click="onDelete(item)">Del</button>
+      <button class="todo-del-button" @click="onDelete(item)">
+        <p class="delete-text">
+          <font-awesome-icon icon="times" class="icon-style" />
+        </p>
+      </button>
     </div>
   </div>
 </template>
@@ -44,6 +48,8 @@ div.todo-array {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 div.todo-item {
   background-color: white;
@@ -89,5 +95,16 @@ button.todo-del-button {
   border-top: none;
   border-bottom: none;
   border-color: #cccccc;
+}
+p.delete-text {
+  opacity: 0;
+  cursor: pointer;
+  color: #e8d4d5;
+  margin: 0px;
+  font-size: 20px;
+}
+p.delete-text:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 </style>
